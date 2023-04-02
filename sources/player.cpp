@@ -2,9 +2,8 @@
 
 namespace ariel
 {
-    Player::Player()
-    {
-    }
+    Player::Player(){}
+    
     Player::Player(string name)
     {
         this->_name = name;
@@ -12,7 +11,7 @@ namespace ariel
 
     string Player::getName()
     {
-        return "";
+        return _name;
     }
 
     int Player::stacksize()
