@@ -9,6 +9,7 @@ namespace ariel
     {
         this->_name = name;
         this->_cardesTaken = 0;
+        this->_stackSize = 0;
         this->_win = -1;
     }
     
@@ -25,14 +26,15 @@ namespace ariel
         return _name;
     }
 
-    // //get the stack size 
-    // int Player::stacksize()
-    // {
-    //     return _stackSize;
-    // }
-
-    void Player::set_stacksize()
+    //get the stack size 
+    int Player::stacksize()
     {
+        return _stackSize;
+    }
+
+    void Player::set_stacksize(int num)
+    {
+        this->_stackSize = num + _stackSize;
 
     }
 

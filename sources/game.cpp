@@ -44,6 +44,8 @@ namespace ariel
                         // p2._stack().push_back(deck.at(i));
                         i++;
                 }
+                p1.set_stacksize(26);
+                p2.set_stacksize(26);
                 
                 // now we redy to play
         }
@@ -93,6 +95,9 @@ namespace ariel
                 if(p1_card.get_NumCard() == p2_card.get_NumCard()){
                         _p2.set_win(2);
                         _p1.set_win(2);
+                        if(_p1.stacksize() == 1 ){
+
+                        }
 
                         while (p1_card.get_NumCard() == p2_card.get_NumCard())
                         {
@@ -104,6 +109,7 @@ namespace ariel
                                 // a new war
                                 p1_card = _p1.get_stack().back();
                                 p2_card = _p2.get_stack().back();
+                                if(_p1.get_stack().empty())
                         }
                         if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                         {
@@ -128,6 +134,8 @@ namespace ariel
                         _p1.set_cardesTaken(num_of_card);
                         _p2.get_stack().pop_back();
                         _p1.get_stack().pop_back();
+                        _p2.set_stacksize(-num_of_card);
+                        _p1.set_stacksize(-num_of_card);
 
                 }
                 else if(p1_card.get_NumCard() < p2_card.get_NumCard()|| (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14)){
@@ -136,6 +144,8 @@ namespace ariel
                         _p2.set_cardesTaken(num_of_card);
                         _p2.get_stack().pop_back();
                         _p1.get_stack().pop_back();
+                        _p2.set_stacksize(-num_of_card);
+                        _p1.set_stacksize(-num_of_card);
                 }
         }
 
