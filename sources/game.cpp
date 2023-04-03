@@ -8,19 +8,24 @@ namespace ariel
 {
         Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         {
-                // first we need to creat the deck cards for the game 
-                // we have 52 cards
+                // first we need to creat the deck cards for the game
+
+                // we creat 52 cards
                 vector<Card> deck(52);
-                string a[NUM_SHAPE] = {"Spades" , "Hearts" , "Clubs" ," Diamonds"};
-                int b[NUM_OF_NUMCARD] = {1, 2, 3,4, 5 ,6,7,8,9,10,11,12,13};
+                string a[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
+                int b[NUM_OF_NUMCARD] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
                 for (int i = 0; i < NUM_SHAPE; i++)
                 {
                         for (int j = 0; j < NUM_OF_NUMCARD; j++)
                         {
-                           deck.push_back(Card(b[j],a[i]));     
-                        } 
+                                Card cards(b[j], a[i]);
+                                deck.push_back(cards);
+                        }
                 }
-                
+
+                // now we need to shuffle the deck 
+
+
                 
 
                 
