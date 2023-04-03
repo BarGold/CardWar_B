@@ -15,13 +15,13 @@ namespace ariel
                 // first we need to creat the deck cards for the game
                 // we creat 52 cards
                 vector<Card> deck(52);
-                string a[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
-                int b[NUM_OF_NUMCARD] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-                for (int i = 0; i < NUM_SHAPE; i++)
+                int a[NUM_OF_NUMCARD] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+                string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
+                for (int i = 0; i < NUM_OF_NUMCARD; i++)
                 {
-                        for (int j = 0; j < NUM_OF_NUMCARD; j++)
+                        for (int j = 0; j < NUM_SHAPE; j++)
                         {
-                                Card cards(b[j], a[i]);
+                                Card cards(a[j], b[i]);
                                 deck.push_back(cards);
                         }
                 }
