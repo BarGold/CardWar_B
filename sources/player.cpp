@@ -1,12 +1,18 @@
 #include "player.hpp"
+#include "card.hpp"
+#include <vector>
 
 namespace ariel
 {
-    Player::Player(){}
     
     Player::Player(string name)
     {
         this->_name = name;
+        this->_cardesTaken = 0;
+    }
+
+    vector<Card> Player::_stack(){
+        
     }
 
     string Player::getName()

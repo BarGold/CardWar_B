@@ -11,8 +11,8 @@ namespace ariel
 {
         Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         {
+                // !!!!!!!
                 // first we need to creat the deck cards for the game
-
                 // we creat 52 cards
                 vector<Card> deck(52);
                 string a[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
@@ -25,24 +25,25 @@ namespace ariel
                                 deck.push_back(cards);
                         }
                 }
+                
 
+                //!!!!!!!
                 // now we need to shuffle the deck
                 srand(time(0)); // to get random numbers each run
                 random_shuffle(deck.begin(), deck.end());
                 
-
+                // ***
                 // Each of the players receives 26 cards
                 int i = 0;
                 while (!deck.empty())
                 {
-                        p1._stack.push_back(deck.at(i));
+                        p1._stack().push_back(deck.at(i));
                         i++;
-                        p2._stack.push_back(deck.at(i));
+                        p2._stack().push_back(deck.at(i));
                         i++;
                 }
                 
                 // now we redy to play
-                
         }
 
         void Game::set_war()
