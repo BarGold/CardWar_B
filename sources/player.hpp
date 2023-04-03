@@ -23,7 +23,7 @@ private:
 
     // double win_rate;
 
-    // int _win;        // if he win 1 , loss 0 , Draw 2
+    int _win;        // if he win 1 , loss 0 , Draw 2 , new player -1
     // Card card_Play; // player card for turn
 
 public:
@@ -43,7 +43,7 @@ public:
     void set_win_rate();
     double get_win_rate();
 
-    void set_win();
+    void set_win(int n);
     int get_win();
 };
 

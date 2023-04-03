@@ -82,6 +82,8 @@ namespace ariel
         }
         void Game::playTurn()
         {
+
+
         }
 
 }

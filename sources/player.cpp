@@ -9,6 +9,7 @@ namespace ariel
     {
         this->_name = name;
         this->_cardesTaken = 0;
+        this->_win = -1;
     }
     
     void Player::add_to_stack(Card& card){
@@ -53,8 +54,9 @@ namespace ariel
         return 0;
     }
 
-    void Player::set_win()
+    void Player::set_win(int n)
     {
+        _win = n;
     }
     int Player::get_win()
     {
