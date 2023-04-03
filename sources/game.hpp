@@ -17,6 +17,9 @@ private:
     Player &_p1;
     Player &_p2;
 
+    // the deck of cards to play a game
+    // vector<Card> _card_turn;
+
     string name_win;
 
     double draw_rate;
@@ -25,13 +28,12 @@ private:
     int war; // count how many war have in 1 turn;
 
 public:
-    Game(Player& p1, Player& p2);
+    Game(Player &p1, Player &p2);
     ~Game();
-    
-    // the deck of cards to play a game
-    vector<Card> deck;
-    vector<Card> card_turn;
-    
+
+    // void add_to_cardesTurn(Card &card);
+    // vector<Card> get_cardesTurn();
+
 
     void set_war();
     int get_war();

@@ -118,7 +118,7 @@ void Game::playTurn()
                 flag_draw = 1;
                 _p2.set_win(2);
                 _p1.set_win(2);
-
+                vector<Card> _card_turn;
                 while (flag_draw == 1)
                 {
                         if (_p1.stacksize() == 0)
@@ -229,4 +229,6 @@ void Game::playTurn()
         }
 }
 
-Game::~Game(){}
+Game::~Game(){
+
+}
