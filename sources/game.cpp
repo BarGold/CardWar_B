@@ -15,7 +15,7 @@ namespace ariel
                 // first we need to creat the deck cards for the game
                 // we creat 52 cards
                 vector<Card> deck(52);
-                int a[NUM_OF_NUMCARD] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+                int a[NUM_OF_NUMCARD] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,14}; // 14 - Ace card 
                 string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
                 for (int i = 0; i < NUM_OF_NUMCARD; i++)
                 {
@@ -105,7 +105,7 @@ namespace ariel
                                 p1_card = _p1.get_stack().back();
                                 p2_card = _p2.get_stack().back();
                         }
-                        if (p1_card.get_NumCard() > p2_card.get_NumCard())
+                        if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                         {
                                 _p2.set_win(0);
                                 _p1.set_win(1);
@@ -113,7 +113,7 @@ namespace ariel
                                 _p2.get_stack().pop_back();
                                 _p1.get_stack().pop_back();
                         }
-                        else if (p1_card.get_NumCard() < p2_card.get_NumCard())
+                        else if (p1_card.get_NumCard() < p2_card.get_NumCard()|| (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
                         {
                                 _p2.set_win(1);
                                 _p1.set_win(0);
@@ -122,7 +122,7 @@ namespace ariel
                                 _p1.get_stack().pop_back();
                         }
                 }
-                else if(p1_card.get_NumCard() > p2_card.get_NumCard()){
+                else if(p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14)){
                         _p2.set_win(0);
                         _p1.set_win(1);
                         _p1.set_cardesTaken(num_of_card);
@@ -130,7 +130,7 @@ namespace ariel
                         _p1.get_stack().pop_back();
 
                 }
-                else if(p1_card.get_NumCard() < p2_card.get_NumCard()){
+                else if(p1_card.get_NumCard() < p2_card.get_NumCard()|| (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14)){
                         _p2.set_win(1);
                         _p1.set_win(0);
                         _p2.set_cardesTaken(num_of_card);
