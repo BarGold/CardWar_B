@@ -14,8 +14,8 @@ namespace ariel
 class Game
 {
 private:
-    Player &_p1;
-    Player &_p2;
+    Player _p1;
+    Player _p2;
 
     // the deck of cards to play a game
     // vector<Card> _card_turn;
