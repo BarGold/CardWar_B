@@ -130,11 +130,9 @@ namespace ariel
                                         int i = 0;
                                         while (i < num_of_card)
                                         {
-                                                p1.add_to_cardesTaken(deck.at(i));
-                                                // p1._stack().push_back(deck.at(i));
+                                                p1.add_to_cardesTaken(card_turn.at(i));
                                                 i++;
-                                                p2.add_to_cardesTaken(deck.at(i));
-                                                // p2._stack().push_back(deck.at(i));
+                                                p2.add_to_cardesTaken(card_turn.at(i));
                                                 i++;
                                         }
                                         flag_draw = 0;
