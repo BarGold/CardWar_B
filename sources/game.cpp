@@ -1,8 +1,11 @@
 #include "game.hpp"
 #include "card.hpp"
 #include <vector>
+#include <algorithm>
 const int NUM_SHAPE = 4;
 const int NUM_OF_NUMCARD = 13; 
+
+// to solv this pat i used https://www.geeksforgeeks.org/vector-in-cpp-stl/
 
 namespace ariel
 {
@@ -23,11 +26,22 @@ namespace ariel
                         }
                 }
 
-                // now we need to shuffle the deck 
-
-
+                // now we need to shuffle the deck
+                srand(time(0)); // to get random numbers each run
+                random_shuffle(deck.begin(), deck.end());
                 
 
+                // Each of the players receives 26 cards
+                int i = 0;
+                while (!deck.empty())
+                {
+                        p1._stack.push_back(deck.at(i));
+                        i++;
+                        p2._stack.push_back(deck.at(i));
+                        i++;
+                }
+                
+                // now we redy to play
                 
         }
 
