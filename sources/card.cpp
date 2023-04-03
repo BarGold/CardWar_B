@@ -2,6 +2,8 @@
 
 namespace ariel
 {
-    
+    int Card::get_NumCard(){
+        return this->_num;
+    }
     
 }

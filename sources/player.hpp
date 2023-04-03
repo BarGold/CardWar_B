@@ -18,12 +18,14 @@ private:
     int _cardesTaken; // amount of cards this player has won.
     vector<Card> _stack;
 
+
     // int _stackSize;   // amount of cards left
 
 
     // double win_rate;
 
     int _win;        // if he win 1 , loss 0 , Draw 2 , new player -1
+                    // if have draw or tico 
     // Card card_Play; // player card for turn
 
 public:
@@ -38,7 +40,7 @@ public:
     void set_stacksize();
 
     int cardesTaken();
-    void set_cardesTaken();
+    void set_cardesTaken(int num_of_card);
 
     void set_win_rate();
     double get_win_rate();

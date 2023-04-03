@@ -42,8 +42,9 @@ namespace ariel
         return _cardesTaken;
     }
     
-    void Player::set_cardesTaken()
+    void Player::set_cardesTaken(int num_of_card)
     {
+        this->_cardesTaken = _cardesTaken+num_of_card;
     }
 
     void Player::set_win_rate()

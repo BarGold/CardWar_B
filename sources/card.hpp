@@ -18,6 +18,7 @@ public:
         this->_num = num;
         this->_shape = shape;
     };
+    int get_NumCard();
 };
 
 #endif
