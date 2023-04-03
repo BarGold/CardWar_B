@@ -8,7 +8,7 @@ namespace ariel
     Player::Player(string name)
     {
         this->_name = name;
-        this->_cardesTaken = 0;
+        this->_cardesTakenSize = 0;
         this->_stackSize = 0;
         this->_win = -1;
     }
@@ -19,6 +19,14 @@ namespace ariel
 
     vector<Card> Player::get_stack(){
         return this->_stack;
+    }
+
+    void Player::add_to_cardesTaken(Card& card){
+        _cardesTaken.push_back(card);
+    }
+
+    vector<Card> Player::get_cardesTaken(){
+        return this->_cardesTaken;
     }
 
     string Player::getName()
@@ -41,12 +49,12 @@ namespace ariel
     //get the cards this player has won
     int Player::cardesTaken()
     {
-        return _cardesTaken;
+        return _cardesTakenSize;
     }
     
     void Player::set_cardesTaken(int num_of_card)
     {
-        this->_cardesTaken = _cardesTaken+num_of_card;
+        this->_cardesTakenSize = _cardesTakenSize+num_of_card;
     }
 
     void Player::set_win_rate()
