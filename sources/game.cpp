@@ -71,6 +71,16 @@ namespace ariel
         }
         void Game::printWiner()
         {
+                if(_p1.cardesTaken() == _p2.cardesTaken()){
+                        throw 
+                }
+                else if(_p1.cardesTaken() > _p2.cardesTaken()){
+                        cout << "the Winner is: " << _p1.getName() << endl;
+                }
+                else if (_p1.cardesTaken() < _p2.cardesTaken())
+                {
+                        cout << "the Winner is: " << _p2.getName() << endl;
+                }
         }
         void Game::printLog()
         {
@@ -80,20 +90,20 @@ namespace ariel
         }
         void Game::printLastTurn()
         {
-                
+                cout << 
         }
         void Game::playTurn()
         {
                 int num_of_card = 0;
                 int flag_draw = 0;
-                vector<Card> card_turn;
+
                 _p2.set_win(-1);
                 _p1.set_win(-1);
                 // Returns a reference to the last card in the gamer stack
                 Card p1_card = _p1.get_stack().back();
                 Card p2_card = _p2.get_stack().back();
-                card_turn.push_back(p1_card);
-                card_turn.push_back(p2_card);
+                this->card_turn.push_back(p1_card);
+                this->card_turn.push_back(p2_card);
                 _p2.set_stacksize(-1);
                 _p1.set_stacksize(-1);
                 _p2.get_stack().pop_back();
@@ -116,9 +126,9 @@ namespace ariel
                                         int i = 0;
                                         while (i < num_of_card)
                                         {
-                                                p1.add_to_cardesTaken(card_turn.at(i));
+                                                p1.add_to_cardesTaken(this->card_turn.at(i));
                                                 i++;
-                                                p2.add_to_cardesTaken(card_turn.at(i));
+                                                p2.add_to_cardesTaken(this->card_turn.at(i));
                                                 i++;
                                         }
                                         flag_draw = 0;
@@ -130,9 +140,9 @@ namespace ariel
                                         int i = 0;
                                         while (i < num_of_card)
                                         {
-                                                p1.add_to_cardesTaken(card_turn.at(i));
+                                                p1.add_to_cardesTaken(this->card_turn.at(i));
                                                 i++;
-                                                p2.add_to_cardesTaken(card_turn.at(i));
+                                                p2.add_to_cardesTaken(this->card_turn.at(i));
                                                 i++;
                                         }
                                         flag_draw = 0;
@@ -142,8 +152,8 @@ namespace ariel
                                         num_of_card = num_of_card + 2;
                                         p1_card = _p1.get_stack().back();
                                         p2_card = _p2.get_stack().back();
-                                        card_turn.push_back(p1_card);
-                                        card_turn.push_back(p2_card);
+                                        this->card_turn.push_back(p1_card);
+                                        this->card_turn.push_back(p2_card);
                                         _p2.get_stack().pop_back();
                                         _p1.get_stack().pop_back();
                                         _p2.set_stacksize(-1);
@@ -153,8 +163,8 @@ namespace ariel
                                         num_of_card = num_of_card + 2;
                                         p1_card = _p1.get_stack().back();
                                         p2_card = _p2.get_stack().back();
-                                        card_turn.push_back(p1_card);
-                                        card_turn.push_back(p2_card);
+                                        this->card_turn.push_back(p1_card);
+                                        this->card_turn.push_back(p2_card);
                                         _p2.get_stack().pop_back();
                                         _p1.get_stack().pop_back();
                                         _p2.set_stacksize(-1);
@@ -165,7 +175,7 @@ namespace ariel
                                                 _p2.set_win(0);
                                                 _p1.set_win(1);
                                                 _p1.set_cardesTaken(num_of_card);
-                                                _p1.add_to_cardesTaken(card_turn);
+                                                _p1.add_to_cardesTaken(this->card_turn);
                                                 flag_draw = 0;
                                         }
                                         else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
@@ -173,7 +183,7 @@ namespace ariel
                                                 _p2.set_win(1);
                                                 _p1.set_win(0);
                                                 _p2.set_cardesTaken(num_of_card);
-                                                _p2.add_to_cardesTaken(card_turn);
+                                                _p2.add_to_cardesTaken(this->card_turn);
                                                 flag_draw = 0;
                                         }
                                 }
@@ -183,13 +193,13 @@ namespace ariel
                         _p2.set_win(0);
                         _p1.set_win(1);
                         _p1.set_cardesTaken(num_of_card);
-                        _p1.add_to_cardesTaken(card_turn);
+                        _p1.add_to_cardesTaken(this->card_turn);
                 }
                 else if(p1_card.get_NumCard() < p2_card.get_NumCard()|| (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14)){
                         _p2.set_win(1);
                         _p1.set_win(0);
                         _p2.set_cardesTaken(num_of_card);
-                        _p2.add_to_cardesTaken(card_turn);
+                        _p2.add_to_cardesTaken(this->card_turn);
                 }
         }
 

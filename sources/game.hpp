@@ -32,7 +32,7 @@ public:
     
     // the deck of cards to play a game
     vector<Card> deck;
-    // vector<Card> card_turn;
+    vector<Card> card_turn;
     
 
     void set_war();
