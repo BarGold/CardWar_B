@@ -3,7 +3,7 @@
 #include <vector>
 
 namespace ariel
-{
+{};
     
     Player::Player(string name)
     {
@@ -74,4 +74,6 @@ namespace ariel
         return _win;
     }
 
+
+Player::~Player() {
 }

@@ -31,6 +31,7 @@ private:
 
 public:
     Player(string name);
+    ~Player();
     void add_to_stack(Card& card);
     vector<Card> get_stack();
 

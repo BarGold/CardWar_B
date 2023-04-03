@@ -17,8 +17,6 @@ private:
     Player &_p1;
     Player &_p2;
 
-    vector<Card> deck;
-
     string name_win;
 
     double draw_rate;

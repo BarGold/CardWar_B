@@ -14,10 +14,8 @@ private:
     int _num;
     string _shape; // Spades , Hearts , Clubs , Diamonds
 public:
-    Card(int num , string shape){
-        this->_num = num;
-        this->_shape = shape;
-    };
+    Card(int num , string shape);
+    ~Card();
     int get_NumCard();
 };
 
