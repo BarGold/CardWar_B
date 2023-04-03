@@ -24,8 +24,7 @@ private:
 
     // double win_rate;
 
-    int _win;        // if he win 1 , loss 0 , Draw 2 , new player -1
-                    // if have draw or tico 
+    int _win;        // if he win 1 , loss 0 , Draw 2 , new player/new turn -1
     // Card card_Play; // player card for turn
 
 public:

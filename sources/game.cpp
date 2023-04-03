@@ -82,22 +82,36 @@ namespace ariel
         }
         void Game::playTurn()
         {
+                int num_of_card = 0;
+                _p2.set_win(-1);
+                _p1.set_win(-1);
                 // Returns a reference to the last card in the gamer stack
                 Card p1_card = _p1.get_stack().back();
                 Card p2_card = _p2.get_stack().back();
+                num_of_card = 2;
 
                 if(p1_card.get_NumCard() == p2_card.get_NumCard()){
+                        _p2.set_win(2);
+                        _p1.set_win(2);
+                        
+                        
+
 
                 }
                 else if(p1_card.get_NumCard() > p2_card.get_NumCard()){
                         _p2.set_win(0);
                         _p1.set_win(1);
-                        _p1.set_cardesTaken(1);
+                        _p1.set_cardesTaken(num_of_card);
+                        _p2.get_stack().pop_back();
+                        _p1.get_stack().pop_back();
 
                 }
                 else if(p1_card.get_NumCard() < p2_card.get_NumCard()){
                         _p2.set_win(1);
                         _p1.set_win(0);
+                        _p2.set_cardesTaken(num_of_card);
+                        _p2.get_stack().pop_back();
+                        _p1.get_stack().pop_back();
                 }
         }
 

@@ -33,6 +33,8 @@ public:
     // the deck of cards to play a game
     vector<Card> deck;
 
+    
+
     void set_war();
     int get_war();
 
