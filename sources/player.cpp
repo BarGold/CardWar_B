@@ -14,18 +14,23 @@ namespace ariel
         return _name;
     }
 
+    //get the stack size 
     int Player::stacksize()
     {
-        return 0;
-    }
-    void Player::set_stacksize()
-    {
+        return _stackSize;
     }
 
+    void Player::set_stacksize()
+    {
+
+    }
+
+    //get the cards this player has won
     int Player::cardesTaken()
     {
-        return 0;
+        return _cardesTaken;
     }
+    
     void Player::set_cardesTaken()
     {
     }
@@ -43,7 +48,7 @@ namespace ariel
     }
     int Player::get_win()
     {
-        return 1;
+        return _win;
     }
 
 }

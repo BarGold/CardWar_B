@@ -14,12 +14,12 @@ class Player
 
 private:
     string _name;     // name of player
-    int stack_size;   // amount of cards left
-    int cardes_Taken; // amount of cards this player has won.
+    int _stackSize;   // amount of cards left
+    int _cardesTaken; // amount of cards this player has won.
 
     double win_rate;
 
-    int win;        // if he win 1 , loss 0
+    int _win;        // if he win 1 , loss 0 , Draw 2
     Card card_Play; // player card for turn
 
 public:
