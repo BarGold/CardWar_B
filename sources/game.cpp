@@ -37,9 +37,11 @@ namespace ariel
                 int i = 0;
                 while (!deck.empty())
                 {
-                        p1._stack().push_back(deck.at(i));
+                        p1.add_to_stack(deck.at(i));
+                        // p1._stack().push_back(deck.at(i));
                         i++;
-                        p2._stack().push_back(deck.at(i));
+                        p2.add_to_stack(deck.at(i));
+                        // p2._stack().push_back(deck.at(i));
                         i++;
                 }
                 

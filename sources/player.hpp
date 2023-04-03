@@ -16,7 +16,7 @@ class Player
 private:
     string _name;     // name of player
     int _cardesTaken; // amount of cards this player has won.
-
+    vector<Card> _stack;
 
     // int _stackSize;   // amount of cards left
 
@@ -28,7 +28,9 @@ private:
 
 public:
     Player(string name);
-    vector<Card> _stack();
+    void add_to_stack(Card& card);
+    vector<Card> get_stack();
+    
 
     string getName();
 

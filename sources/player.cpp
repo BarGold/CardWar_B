@@ -10,9 +10,13 @@ namespace ariel
         this->_name = name;
         this->_cardesTaken = 0;
     }
+    
+    void Player::add_to_stack(Card& card){
+        _stack.push_back(card);
+    }
 
-    vector<Card> Player::_stack(){
-        
+    vector<Card> Player::get_stack(){
+        return this->_stack;
     }
 
     string Player::getName()
@@ -20,11 +24,11 @@ namespace ariel
         return _name;
     }
 
-    //get the stack size 
-    int Player::stacksize()
-    {
-        return _stackSize;
-    }
+    // //get the stack size 
+    // int Player::stacksize()
+    // {
+    //     return _stackSize;
+    // }
 
     void Player::set_stacksize()
     {
