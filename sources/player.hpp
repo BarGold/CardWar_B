@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include <vector>
 #include "card.hpp"
 using namespace std;
 
@@ -14,6 +15,11 @@ class Player
 
 private:
     string _name;     // name of player
+
+
+
+    
+
     int _stackSize;   // amount of cards left
     int _cardesTaken; // amount of cards this player has won.
 
@@ -25,6 +31,9 @@ private:
 public:
     Player();
     Player(string name);
+
+    vector<Card> _stack;
+    vector<Card> _cardesTaken;
 
     string getName();
 

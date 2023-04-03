@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 #include "player.hpp"
 using namespace std;
 
@@ -13,8 +14,10 @@ namespace ariel
 class Game
 {
 private:
-    Player _p1;
-    Player _p2;
+    Player &_p1;
+    Player &_p2;
+
+    vector<Card> deck;
 
     string name_win;
 
@@ -24,7 +27,11 @@ private:
     int war; // count how many war have in 1 turn;
 
 public:
-    Game(Player p1, Player p2);
+    Game(Player& p1, Player& p2);
+    ~Game();
+    
+    // the deck of cards to play a game
+    vector<Card> deck;
 
     void set_war();
     int get_war();

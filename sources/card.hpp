@@ -11,9 +11,10 @@ namespace ariel
 class Card
 {
 private:
-    int num;
-    string shape; // Spades , Hearts , Clubs , Diamonds
+    int _num;
+    string _shape; // Spades , Hearts , Clubs , Diamonds
 public:
+    Card(int num , string shape);
 };
 
 #endif
