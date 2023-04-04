@@ -14,24 +14,25 @@ class Player
 {
 
 private:
-    string _name;     // name of player
+    string _name;           // name of player
     int _cardesTakenSize; // amount of cards this player has won.
     int _stackSize;
     vector<Card> _stack;
     vector<Card> _cardesTaken;
-
+    int _win;               // if he win 1 , loss 0 , Draw 2 , new player/new turn -1
 
     // int _stackSize;   // amount of cards left
 
 
     // double win_rate;
 
-    int _win;        // if he win 1 , loss 0 , Draw 2 , new player/new turn -1
+    
     // Card card_Play; // player card for turn
 
 public:
     Player(string name);
     ~Player();
+
     void add_to_stack(Card &card);
     vector<Card> get_stack();
 

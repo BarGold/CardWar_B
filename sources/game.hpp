@@ -18,6 +18,7 @@ private:
     Player _p2;
 
     // the deck of cards to play a game
+    vector<Card> deck;
     // vector<Card> _card_turn;
 
     string name_win;

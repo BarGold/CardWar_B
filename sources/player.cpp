@@ -12,8 +12,13 @@ namespace ariel
         this->_stackSize = 0;
         this->_win = -1;
     }
-    
-    void Player::add_to_stack(Card& card){
+    Player::~Player()
+    {
+        _stack.clear();
+        _cardesTaken.clear();
+    }
+
+    void Player::add_to_stack(Card &card){
         _stack.push_back(card);
     }
 
@@ -21,7 +26,7 @@ namespace ariel
         return this->_stack;
     }
 
-    void Player::add_to_cardesTaken(Card& card){
+    void Player::add_to_cardesTaken(Card &card){
         _cardesTaken.push_back(card);
     }
 
@@ -38,6 +43,7 @@ namespace ariel
     int Player::stacksize()
     {
         return _stackSize;
+        // return _stack.size();
     }
 
     void Player::set_stacksize(int num)
@@ -73,7 +79,3 @@ namespace ariel
     {
         return _win;
     }
-
-
-Player::~Player() {
-}
