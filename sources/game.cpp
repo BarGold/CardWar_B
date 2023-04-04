@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <stddef.h>
 #include <stdio.h>
+#include <random>
+#include <iostream>
+using namespace std;
 const int NUM_SHAPE = 4;
 const int NUM_OF_NUMCARD = 13;
 
@@ -40,12 +43,10 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         // to get random numbers each run
         cout << "hhi" << endl;
 
-        std::srand(time(nullptr));
-        for (std::vector<Card>::size_type i = deck.size() - 1; i > 0; i--)
-        {
-                std::vector<Card>::size_type j = static_cast<std::vector<Card>::size_type>(std::rand()) % (i + 1);
-                std::swap(deck[i], deck[j]);
-        }
+        random_device rd;
+        mt19937 g(rd());
+        // Use std::shuffle to randomly shuffle the cards in the deck
+        shuffle(deck.begin(), deck.end(), g);
         cout << "_____" << endl;
 
         // cout << "hhi" << endl;
