@@ -18,17 +18,20 @@ Game::Game(Player& p1, Player& p2) : _p1(p1), _p2(p2)
         // first we need to creat the deck cards for the game
         // we creat 52 cards
         // vector<Card> deck;
+        cout << deck.size() << endl;
         int a[NUM_OF_NUMCARD] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}; // 14 - Ace card
         string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", " Diamonds"};
+        cout << "hii1" << endl;
         for (int i = 0; i < NUM_OF_NUMCARD; i++)
         {
                 for (int j = 0; j < NUM_SHAPE; j++)
                 {
-                        Card cards(a[j], b[i]);
+                        Card cards(a[i], b[j]);
                         deck.push_back(cards);
+                        cout << deck.size() << endl;
                 }
         }
-
+        cout << "hii" << endl;
         //!!!!!!!
         // now we need to shuffle the deck
         srand(time(0)); // to get random numbers each run
