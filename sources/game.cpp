@@ -12,7 +12,7 @@ const int NUM_OF_NUMCARD = 13;
 namespace ariel
 {
 };
-Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
+Game::Game(Player& p1, Player& p2) : _p1(p1), _p2(p2)
 {
         // !!!!!!!
         // first we need to creat the deck cards for the game

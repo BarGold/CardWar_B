@@ -18,7 +18,7 @@ namespace ariel
         _cardesTaken.clear();
     }
 
-    void Player::add_to_stack(Card &card){
+    void Player::add_to_stack(Card& card){
         _stack.push_back(card);
     }
 
@@ -26,7 +26,7 @@ namespace ariel
         return this->_stack;
     }
 
-    void Player::add_to_cardesTaken(Card &card){
+    void Player::add_to_cardesTaken(Card& card){
         _cardesTaken.push_back(card);
     }
 

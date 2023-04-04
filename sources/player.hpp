@@ -33,10 +33,10 @@ public:
     Player(string name);
     ~Player();
 
-    void add_to_stack(Card &card);
+    void add_to_stack(Card& card);
     vector<Card> get_stack();
 
-    void add_to_cardesTaken(Card &card);
+    void add_to_cardesTaken(Card& card);
     vector<Card> get_cardesTaken();
 
     string getName();
