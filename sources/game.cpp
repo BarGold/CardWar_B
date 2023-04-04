@@ -50,6 +50,8 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
                 p2.add_to_stack(deck.at(i));
                 i++;
         }
+        this->_lastTurn = "";
+        _allGame = "";
         cout << "hii bar" << endl;
 
         // now we redy to play
@@ -80,6 +82,11 @@ string Game::get_name_win()
 
 void Game::playAll()
 {
+        // while (_p1.stacksize() != 0)
+        // {
+        //         playTurn();
+        // }
+        
 }
 void Game::printWiner()
 {
@@ -109,7 +116,6 @@ void Game::playTurn()
         cout << "My problem" << endl;
         int num_of_card = 0;
         int flag_draw = 0;
-        vector<Card> card_turn;
         _p2.set_win(-1);
         _p1.set_win(-1);
         // Returns a reference to the last card in the gamer stack

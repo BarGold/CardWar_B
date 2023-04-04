@@ -17,11 +17,8 @@ private:
     Player _p1;
     Player _p2;
 
-    // the deck of cards to play a game
-
-    // vector<Card> _card_turn;
-
-    string name_win;
+    string _lastTurn;
+    string _allGame;
 
     double draw_rate;
     int draw_amount; //  (draw within a draw counts as 2 draws. )
@@ -32,8 +29,9 @@ public:
     Game(Player& p1, Player& p2);
     ~Game();
 
+    // the deck of cards to play a game
     vector<Card> deck;
-    vector<Card> card_turn;
+    // vector<Card> card_turn;
 
     // void add_to_cardesTurn(Card &card);
     // vector<Card> get_cardesTurn();
