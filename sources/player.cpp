@@ -8,8 +8,6 @@ namespace ariel
     Player::Player(string name)
     {
         this->_name = name;
-        this->_cardesTakenSize = 0;
-        this->_stackSize = 0;
         this->_win = -1;
     }
     Player::~Player()
