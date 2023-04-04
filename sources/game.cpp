@@ -32,38 +32,13 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
                         cout << cards.get_NumCard() << cards.get_shape() << endl;
                 }
         }
-        for (int i = 0; i < 52; i++)
-        {
-                Card p1_card = deck.back();
-                cout << p1_card.get_NumCard() << p1_card.get_shape() << endl;
-                deck.pop_back();
-        }
         //!!!!!!!
         // now we need to shuffle the deck
         // to get random numbers each run
-        cout << "hhi" << endl;
-
         random_device rd;
         mt19937 g(rd());
         // Use std::shuffle to randomly shuffle the cards in the deck
         shuffle(deck.begin(), deck.end(), g);
-        cout << "_____" << endl;
-
-        // cout << "hhi" << endl;
-        // srand(time(0) + 52);
-        // for(int i = 0 ; i<52 ;i++){
-        //         int temp = rand()%52;
-        //         deck.insert(deck.begin() + temp , deck.at(static_cast<std::vector<Card>::size_type>(i)));
-        //         deck.erase(deck.begin() + i);
-        // }
-
-        cout << "hhi" << endl;
-        for (int i = 0; i < 52; i++)
-        {
-                Card p1_card = deck.back();
-                cout << p1_card.get_NumCard() << p1_card.get_shape() << endl;
-                deck.pop_back();
-        }
 
         // ***
         // Each of the players receives 26 cards
@@ -71,12 +46,11 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         while (i < deck.size())
         {
                 p1.add_to_stack(deck.at(i));
-                // p1._stack().push_back(deck.at(i));
                 i++;
                 p2.add_to_stack(deck.at(i));
-                // p2._stack().push_back(deck.at(i));
                 i++;
         }
+        cout << "hii bar" << endl;
         p1.set_stacksize(26);
         p2.set_stacksize(26);
 
@@ -134,6 +108,7 @@ void Game::printLastTurn()
 }
 void Game::playTurn()
 {
+        cout << "My problem" << endl;
         int num_of_card = 0;
         int flag_draw = 0;
         vector<Card> card_turn;
