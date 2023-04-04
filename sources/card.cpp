@@ -12,7 +12,10 @@ int Card::get_NumCard()
 {
     return this->_num;
 }
-
+string Card::get_shape()
+{
+    return this->_shape;
+}
 Card::~Card() {
 }
     

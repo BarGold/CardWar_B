@@ -17,6 +17,7 @@ public:
     Card(int num , string shape);
     ~Card();
     int get_NumCard();
+    string get_shape();
 };
 
 #endif
