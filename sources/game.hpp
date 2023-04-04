@@ -35,6 +35,7 @@ public:
     ~Game();
 
     vector<Card> deck;
+    vector<Card> card_turn;
 
     // void add_to_cardesTurn(Card &card);
     // vector<Card> get_cardesTurn();

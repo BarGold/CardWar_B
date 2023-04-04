@@ -16,8 +16,8 @@ private:
 public:
     Card(int num , string shape);
     ~Card();
-    int get_NumCard();
-    string get_shape();
+    int get_NumCard(); // get the number of Cards
+    string get_shape(); // get the shape of Cards
 };
 
 #endif
