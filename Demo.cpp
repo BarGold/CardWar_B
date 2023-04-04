@@ -22,13 +22,6 @@ int main() {
    Player p2("Bob");
 
    Game game(p1,p2);
-
-   for (int i = 0; i < 26; i++)
-   {
-     Card p1_card = p1.get_stack().back();
-     cout << p1_card.get_NumCard() << endl;
-   }
-
    for (int i=0;i<5;i++) {
     game.playTurn();
    }

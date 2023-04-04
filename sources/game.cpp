@@ -51,8 +51,6 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
                 i++;
         }
         cout << "hii bar" << endl;
-        p1.set_stacksize(26);
-        p2.set_stacksize(26);
 
         // now we redy to play
 }
@@ -119,8 +117,6 @@ void Game::playTurn()
         Card p2_card = _p2.get_stack().back();
         card_turn.push_back(p1_card);
         card_turn.push_back(p2_card);
-        _p2.set_stacksize(-1);
-        _p1.set_stacksize(-1);
         _p2.get_stack().pop_back();
         _p1.get_stack().pop_back();
 
@@ -135,8 +131,6 @@ void Game::playTurn()
                 {
                         if (_p1.stacksize() == 0)
                         {
-                                _p1.set_cardesTaken(num_of_card / 2);
-                                _p2.set_cardesTaken(num_of_card / 2);
                                 size_t i = 0;
                                 while (i < num_of_card)
                                 {
@@ -150,8 +144,6 @@ void Game::playTurn()
                         else if (_p1.stacksize() == 1)
                         {
                                 num_of_card = num_of_card + 2;
-                                _p1.set_cardesTaken(num_of_card / 2);
-                                _p2.set_cardesTaken(num_of_card / 2);
                                 size_t i = 0;
                                 while (i < num_of_card)
                                 {
@@ -172,8 +164,6 @@ void Game::playTurn()
                                 card_turn.push_back(p2_card);
                                 _p2.get_stack().pop_back();
                                 _p1.get_stack().pop_back();
-                                _p2.set_stacksize(-1);
-                                _p1.set_stacksize(-1);
 
                                 // a new war
                                 num_of_card = num_of_card + 2;
@@ -183,14 +173,11 @@ void Game::playTurn()
                                 card_turn.push_back(p2_card);
                                 _p2.get_stack().pop_back();
                                 _p1.get_stack().pop_back();
-                                _p2.set_stacksize(-1);
-                                _p1.set_stacksize(-1);
 
                                 if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                                 {
                                         _p2.set_win(0);
                                         _p1.set_win(1);
-                                        _p1.set_cardesTaken(num_of_card);
                                         size_t i = 0;
                                         while (i < num_of_card)
                                         {
@@ -203,7 +190,6 @@ void Game::playTurn()
                                 {
                                         _p2.set_win(1);
                                         _p1.set_win(0);
-                                        _p2.set_cardesTaken(num_of_card);
                                         size_t i = 0;
                                         while (i < num_of_card)
                                         {
@@ -219,7 +205,6 @@ void Game::playTurn()
         {
                 _p2.set_win(0);
                 _p1.set_win(1);
-                _p1.set_cardesTaken(num_of_card);
                 size_t i = 0;
                 while (i < num_of_card)
                 {
@@ -231,7 +216,6 @@ void Game::playTurn()
         {
                 _p2.set_win(1);
                 _p1.set_win(0);
-                _p2.set_cardesTaken(num_of_card);
                 size_t i = 0;
                 while (i < num_of_card)
                 {

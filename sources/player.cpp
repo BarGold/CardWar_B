@@ -42,26 +42,16 @@ namespace ariel
     //get the stack size 
     int Player::stacksize()
     {
-        return _stackSize;
-        // return _stack.size();
+        return _stack.size();
     }
 
-    void Player::set_stacksize(int num)
-    {
-        this->_stackSize = num + _stackSize;
-
-    }
 
     //get the cards this player has won
     int Player::cardesTaken()
     {
-        return _cardesTakenSize;
+        return _cardesTaken.size();
     }
     
-    void Player::set_cardesTaken(int num_of_card)
-    {
-        this->_cardesTakenSize = _cardesTakenSize+num_of_card;
-    }
 
     void Player::set_win_rate()
     {

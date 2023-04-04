@@ -7,8 +7,6 @@
 #include "player.hpp"
 using namespace std;
 
-const int NUM_CARD = 52;
-
 namespace ariel
 {
 };
