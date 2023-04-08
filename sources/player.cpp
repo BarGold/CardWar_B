@@ -14,7 +14,6 @@ Player::Player(string name)
     this->_Losses = 0;
     this->_Wins = 0;
     this->_cardsWon = "";
-    this->win_rate = 0;
 }
 
 // get the name of player
@@ -23,19 +22,19 @@ string Player::getName()
     return this->_name;
 }
 
-// add card to stack player 
+// add card to stack player
 void Player::add_to_stack(Card &card)
 {
     this->_stack.push_back(card);
 }
 
-// get the stack of player 
+// get the stack of player
 vector<Card> Player::get_stack()
 {
     return this->_stack;
 }
 
-// removes card from stack player 
+// removes card from stack player
 void Player::removes_C_S()
 {
     this->_stack.pop_back();
@@ -80,33 +79,11 @@ int Player::get_Losses()
 }
 
 // get & set of the cards that the player has won
-void Player::set_cardsWon(string s){
+void Player::set_cardsWon(string s)
+{
     this->_cardsWon = s + " , " + this->_cardsWon;
 }
-string Player::get_cardsWon(){
+string Player::get_cardsWon()
+{
     return this->_cardsWon;
 }
-
-double Player::get_win_rate(){
-    return this->win_rate;
-}
-void Player::set_win_rate(double num){
-    this->win_rate = num;
-}
-
-// void Player::set_win_rate()
-// {
-// }
-// double Player::get_win_rate()
-// {
-//     return 0;
-// }
-
-// void Player::set_win(int n)
-// {
-//     _win = n;
-// }
-// int Player::get_win()
-// {
-//     return _win;
-// }

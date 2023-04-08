@@ -7,7 +7,6 @@
 #include "player.hpp"
 using namespace std;
 
-
 namespace ariel
 {
 };
@@ -15,45 +14,22 @@ namespace ariel
 class Game
 {
 private:
-    Player &_p1;                        //player 1
-    Player &_p2;                        //player 2
+    Player &_p1; //player 1
+    Player &_p2; //player 2
 
-    string _lastTurn;                   //string of the last turn to turn
-    string _allGame;                    //string of the prints all the turns played
+    string _lastTurn; //string of the last turn to turn
+    string _allGame;  //string of the prints all the turns played
 
-    vector<Card> deck;                  //the deck of cards to play a game
+    vector<Card> deck; //the deck of cards to play a game
 
     ////////////////////////// To Basic Statistics ////////////////////////////
-    int _draw;                           // count how many draw had in the game;
-    int _turns;                          // num of turns in the game;
-
-
-
-    double draw_rate;
-    int draw_amount; //  (draw within a draw counts as 2 draws. )
-
+    int _draw;  // count how many draw had in the game;
+    int _turns; // num of turns in the game;
 
 public:
-    Game(Player& p1, Player& p2);
-    // ~Game();
-
-    // // the deck of cards to play a game
-    // vector<Card> deck;
-    // vector<Card> card_turn;
-
-    // void add_to_cardesTurn(Card &card);
-    // vector<Card> get_cardesTurn();
-
+    Game(Player &p1, Player &p2);
 
     int get_draw();
-
-    /////// temp 
-
-    // void set_maxTurns(int num);
-    // int get_maxTurns();
-
-    // void set_name_win();
-    // string get_name_win();
 
     void playTurn();      // play turn
     void printLastTurn(); // print the last turn stats.

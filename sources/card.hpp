@@ -12,11 +12,11 @@ class Card
 {
 private:
     int _num;
-    string _shape;              // Spades , Hearts , Clubs , Diamonds
+    string _shape; // Spades , Hearts , Clubs , Diamonds
 public:
     Card(int num, string shape);
-    int get_NumCard();          // get the number of Cards
-    string get_shape();         // get the shape of Cards
+    int get_NumCard();  // get the number of Cards
+    string get_shape(); // get the shape of Cards
 };
 
 #endif
