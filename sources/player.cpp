@@ -3,95 +3,96 @@
 #include <vector>
 
 namespace ariel
-{};
-    
-    Player::Player(string name)
-    {
-        this->_name = name;
-        // this->_win = -1;
-        this->_cardesTaken = 0;
-        this->_Losses = 0;
-        this->_Wins = 0;
-    }
+{
+};
 
-    // Player::~Player()
-    // {
-    //     // _stack.clear();
-    // }
+Player::Player(string name)
+{
+    this->_name = name;
+    this->_cardesTaken = 0;
+    this->_Losses = 0;
+    this->_Wins = 0;
+    this->_cardsWon = "";
+}
 
-    void Player::add_to_stack(Card& card){
-        _stack.push_back(card);
-    }
+// get the name of player
+string Player::getName()
+{
+    return this->_name;
+}
 
-    vector<Card> Player::get_stack(){
-        return this->_stack;
-    }
+// add card to stack player 
+void Player::add_to_stack(Card &card)
+{
+    this->_stack.push_back(card);
+}
 
-    void Player::removes_C_S(){
-        _stack.pop_back();
-    }
+// get the stack of player 
+vector<Card> Player::get_stack()
+{
+    return this->_stack;
+}
 
-    // void Player::add_to_cardesTaken(Card& card){
-    //     _cardesTaken.push_back(card);
-    // }
+// removes card from stack player 
+void Player::removes_C_S()
+{
+    this->_stack.pop_back();
+}
 
-    // vector<Card> Player::get_cardesTaken(){
-    //     return this->_cardesTaken;
-    // }
+//get the stack size
+int Player::stacksize()
+{
+    return _stack.size();
+}
 
-    string Player::getName()
-    {
-        return _name;
-    }
+//get the num of cards that the player has won
+int Player::cardesTaken()
+{
+    return this->_cardesTaken;
+}
 
-    //get the stack size 
-    int Player::stacksize()
-    {
-        return _stack.size();
-    }
+// add num of cards that the player has won
+void Player::set_cardesTaken(int num)
+{
+    this->_cardesTaken = this->_cardesTaken + num;
+}
+
+// get & set of wins to player
+void Player::set_Wins(int num)
+{
+    _Wins = _Wins + num;
+}
+int Player::get_Wins()
+{
+    return _Wins;
+}
+
+// get & set of losses to player
+void Player::set_Losses(int num)
+{
+    _Losses = _Losses + num;
+}
+int Player::get_Losses()
+{
+    return _Losses;
+}
 
 
-    //get the cards this player has won
-    int Player::cardesTaken()
-    {
-        return _cardesTaken;
-    }
 
-    void Player::set_cardesTaken(int num){
-        _cardesTaken = _cardesTaken + num;
-    }
 
-    void Player::set_Wins(int num)
-    {
-        _Wins = _Wins + num;
-    }
-    int Player::get_Wins()
-    {
-        return _Wins;
-    }
+// void Player::set_win_rate()
+// {
+// }
+// double Player::get_win_rate()
+// {
+//     return 0;
+// }
 
-    void Player::set_Losses(int num)
-    {
-        _Losses = _Losses + num;
-    }
-    int Player::get_Losses()
-    {
-        return _Losses;
-    }
-
-    void Player::set_win_rate()
-    {
-    }
-    double Player::get_win_rate()
-    {
-        return 0;
-    }
-
-    // void Player::set_win(int n)
-    // {
-    //     _win = n;
-    // }
-    // int Player::get_win()
-    // {
-    //     return _win;
-    // }
+// void Player::set_win(int n)
+// {
+//     _win = n;
+// }
+// int Player::get_win()
+// {
+//     return _win;
+// }
