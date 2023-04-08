@@ -52,6 +52,10 @@ public:
     void set_Losses(int num);
     int get_Losses();
 
+    // get & set of the cards that the player has won
+    void set_cardsWon(string s);
+    string get_cardsWon();
+
     // void set_win_rate();
     // double get_win_rate();
 
