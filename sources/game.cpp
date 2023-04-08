@@ -85,6 +85,11 @@ void Game::printStats()
 {
 }
 
+int Game::get_draw()
+{
+        return this->_draw;
+}
+
 void Game::printLastTurn()
 {
         cout << _lastTurn << endl;
@@ -162,7 +167,7 @@ void Game::playTurn()
                 while (flag_draw == 1)
                 {
                         this->_draw = this->_draw + 1;
-                        _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() +
+                        _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". Draw. ";
                         if (_p1.stacksize() == 0)
                         {
@@ -225,6 +230,7 @@ void Game::playTurn()
                                         _p2.set_Losses(1);
                                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
+                                        _p1.set_cardsWon(p1_card_Test + " of " + p1_card.get_shape());
                                         _p1.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
@@ -236,6 +242,7 @@ void Game::playTurn()
                                         _p1.set_Losses(1);
                                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
+                                        _p2.set_cardsWon(p2_card_Test + " of " + p2_card.get_shape());
                                         _p2.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
@@ -249,6 +256,7 @@ void Game::playTurn()
                 _p2.set_Losses(1);
                 _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                             _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
+                _p1.set_cardsWon(p1_card_Test + " of " + p1_card.get_shape());
                 _p1.set_cardesTaken(num_of_card);
         }
         // if p2 win
@@ -258,6 +266,8 @@ void Game::playTurn()
                 _p1.set_Losses(1);
                 _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                             _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
+
+                _p2.set_cardsWon(p2_card_Test + " of " + p2_card.get_shape());
                 _p2.set_cardesTaken(num_of_card);
         }
         if (_p1.stacksize() == 0 || _p2.stacksize() == 0)

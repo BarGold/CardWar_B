@@ -44,8 +44,7 @@ public:
     // vector<Card> get_cardesTurn();
 
 
-    // void set_war(int num);
-    // int get_war();
+    int get_draw();
 
     /////// temp 
 
