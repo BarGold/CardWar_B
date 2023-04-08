@@ -34,8 +34,9 @@ public:
     vector<Card> get_stack();
     int stacksize();
 
-    void add_to_cardesTaken(Card& card);
-    vector<Card> get_cardesTaken();
+    // void add_to_cardesTaken(Card& card);
+    // vector<Card> get_cardesTaken();
+    void set_cardesTaken(int num);
     int cardesTaken();
 
 
