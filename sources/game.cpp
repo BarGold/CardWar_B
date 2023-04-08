@@ -103,10 +103,13 @@ void Game::printWiner()
 
 void Game::printLog()
 {
+        cout << _allGame << endl;
 }
+
 void Game::printStats()
 {
 }
+
 void Game::printLastTurn()
 {
         cout << _lastTurn << endl;
@@ -214,5 +217,5 @@ void Game::playTurn()
                 _p2.getName() + " played " + to_string(p2_card.get_NumCard())+ " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins." ;
                 _p2.set_cardesTaken(num_of_card);
         }
-        _allGame = _lastTurn + " " + _allGame ; 
+        _allGame = _lastTurn + "\n" + _allGame ; 
 }
