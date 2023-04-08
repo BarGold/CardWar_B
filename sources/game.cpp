@@ -50,7 +50,7 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
                 p2.add_to_stack(deck.at(i));
                 i++;
         }
-        this->_lastTurn = "";
+        _lastTurn = "";
         _allGame = "";
         cout << "hii bar" << endl;
 
@@ -111,18 +111,23 @@ void Game::printStats()
 void Game::printLastTurn()
 {
 }
+
+// string Card_Test(int num){
+
+// }
+
 void Game::playTurn()
 {
         cout << "My problem" << endl;
-        int num_of_card = 0;
+
         int flag_draw = 0;
         _p2.set_win(-1);
         _p1.set_win(-1);
+
+        int num_of_card = 0;
         // Returns a reference to the last card in the gamer stack
         Card p1_card = _p1.get_stack().back();
-        Card p2_card = _p2.get_stack().back();
-        card_turn.push_back(p1_card);
-        card_turn.push_back(p2_card);
+        Card p2_card = _p2.get_stack().back();        
         _p2.get_stack().pop_back();
         _p1.get_stack().pop_back();
 
@@ -211,22 +216,15 @@ void Game::playTurn()
         {
                 _p2.set_win(0);
                 _p1.set_win(1);
-                size_t i = 0;
-                while (i < num_of_card)
-                {
-                        _p1.add_to_cardesTaken(card_turn.at(i));
-                        i++;
-                }
+                _lastTurn = _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape()+
+                _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + "." + _p1.getName() + "wins" ;
         }
         else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
         {
                 _p2.set_win(1);
                 _p1.set_win(0);
-                size_t i = 0;
-                while (i < num_of_card)
-                {
-                        _p2.add_to_cardesTaken(card_turn.at(i));
-                        i++;
-                }
+                _lastTurn = _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " +
+                _p2.getName() + " played " + to_string(p2_card.get_NumCard())+ " of " + p2_card.get_shape() + "." + _p2.getName() + "wins" ;
         }
+        _allGame = _lastTurn + _allGame ; 
 }

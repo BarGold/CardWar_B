@@ -13,7 +13,6 @@ namespace ariel
     Player::~Player()
     {
         _stack.clear();
-        _cardesTaken.clear();
     }
 
     void Player::add_to_stack(Card& card){
@@ -24,13 +23,13 @@ namespace ariel
         return this->_stack;
     }
 
-    void Player::add_to_cardesTaken(Card& card){
-        _cardesTaken.push_back(card);
-    }
+    // void Player::add_to_cardesTaken(Card& card){
+    //     _cardesTaken.push_back(card);
+    // }
 
-    vector<Card> Player::get_cardesTaken(){
-        return this->_cardesTaken;
-    }
+    // vector<Card> Player::get_cardesTaken(){
+    //     return this->_cardesTaken;
+    // }
 
     string Player::getName()
     {
@@ -47,7 +46,7 @@ namespace ariel
     //get the cards this player has won
     int Player::cardesTaken()
     {
-        return _cardesTaken.size();
+        return _cardesTaken;
     }
     
 

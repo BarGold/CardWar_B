@@ -16,7 +16,8 @@ class Player
 private:
     string _name;               // name of player
     vector<Card> _stack;         // cards in the player stack
-    vector<Card> _cardesTaken;  // cards that the player has won
+    int _cardesTaken;
+    // vector<Card> _cardesTaken;  // cards that the player has won
     int _win;               // if he win 1 , loss 0 , Draw 2 , new player/new turn -1
 
 
