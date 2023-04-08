@@ -48,6 +48,7 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         this->_lastTurn = "";
         this->_allGame = "";
         this->_draw = 0;
+        this->_turns = 0;
 
         // now we redy to play
 }
@@ -85,12 +86,17 @@ void Game::printStats()
 {
 
         //https://goodcalculators.com/winning-percentage-calculator/
-        int Total_Games_Played = _p1.get_Wins() + _p1.get_Losses() + get_draw();
-        double temp = (2 * _p1.get_Wins() + get_draw())/ (2 * Total_Games_Played)* 100 ;
+        double temp = (2 * _p1.get_Wins() + get_draw())/ (2 * this->_turns)* 100 ;
         _p1.set_win_rate(temp);
-        cout << "Basic Statistics:" << endl;
-        cout << "Player One: " << endl;
-        cout << "Name: " << _p1.getName() << endl;
+
+         cout << "------------------------------------- Basic Statistics:  -------------------------------------" << endl;
+        cout << "This Game " << _p1.getName() << " VS " <<  _p2.getName()<< endl;
+        cout << "Amount Of Draws: " << get_draw() << endl;
+        cout << "Amount Of Turns: " << this->_turns << endl;
+
+        cout << "------------------ " << "Player One: " << _p1.getName() << " ------------------" << endl;
+        cout << "Num of Wins: " << _p1.get_Wins() << endl;
+        cout << "Num of Losses: " << _p1.get_Losses() << endl;
         cout << "Win Rate: " << _p1.get_win_rate() << "%" << endl;
         cout << "Cards Won: " << _p1.get_cardsWon() << endl;
 
@@ -151,6 +157,7 @@ void Game::playTurn()
         _p1.removes_C_S();
 
         num_of_card = 2;
+        this->_turns = this->_turns + 1;
 
         // to the print turn 11 = "Jack" | 12="Queen" | 13 = "King" | 14 = "Ace"
         string p1_card_Test = "";
