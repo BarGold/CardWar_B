@@ -13,7 +13,7 @@ namespace ariel
     }
     Player::~Player()
     {
-        _stack.clear();
+        // _stack.clear();
     }
 
     void Player::add_to_stack(Card& card){

@@ -80,12 +80,12 @@ string Game::get_name_win()
 
 void Game::playAll()
 {
-        // while (_p1.stacksize() != 0)
-        // {
-        //         playTurn();
-        // }
-        
+        while (_p1.stacksize() != 0)
+        {
+                playTurn();
+        }
 }
+
 void Game::printWiner()
 {
         if (_p1.cardesTaken() == _p2.cardesTaken())
@@ -100,6 +100,7 @@ void Game::printWiner()
                 cout << "the Winner is: " << _p2.getName() << endl;
         }
 }
+
 void Game::printLog()
 {
 }
@@ -108,6 +109,7 @@ void Game::printStats()
 }
 void Game::printLastTurn()
 {
+        cout << _lastTurn << endl;
 }
 
 // string Card_Test(int num){

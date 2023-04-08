@@ -14,8 +14,8 @@ namespace ariel
 class Game
 {
 private:
-    Player _p1;
-    Player _p2;
+    Player &_p1;
+    Player &_p2;
 
     string _lastTurn;
     string _allGame;
