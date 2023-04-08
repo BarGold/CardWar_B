@@ -83,6 +83,19 @@ void Game::printLog()
 
 void Game::printStats()
 {
+
+        //https://goodcalculators.com/winning-percentage-calculator/
+        int Total_Games_Played = _p1.get_Wins() + _p1.get_Losses() + get_draw();
+        double temp = (2 * _p1.get_Wins() + get_draw())/ (2 * Total_Games_Played)* 100 ;
+        _p1.set_win_rate(temp);
+        cout << "Basic Statistics:" << endl;
+        cout << "Player One: " << endl;
+        cout << "Name: " << _p1.getName() << endl;
+        cout << "Win Rate: " << _p1.get_win_rate() << "%" << endl;
+        cout << "Cards Won: " << _p1.get_cardsWon() << endl;
+
+
+
 }
 
 int Game::get_draw()

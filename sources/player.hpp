@@ -21,6 +21,7 @@ private:
     int _Wins;               //num of wins to player
     int _Losses;             //num of losses to player
     string _cardsWon;        //to print the cards that the player has won
+    double  win_rate;
 
 
     // vector<Card> _cardesTaken;  // cards that the player has won
@@ -56,8 +57,8 @@ public:
     void set_cardsWon(string s);
     string get_cardsWon();
 
-    // void set_win_rate();
-    // double get_win_rate();
+    void set_win_rate(double num);
+    double get_win_rate();
 
     // void set_win(int n);
     // int get_win();

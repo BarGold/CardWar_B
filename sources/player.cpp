@@ -14,6 +14,7 @@ Player::Player(string name)
     this->_Losses = 0;
     this->_Wins = 0;
     this->_cardsWon = "";
+    this->win_rate = 0;
 }
 
 // get the name of player
@@ -86,7 +87,12 @@ string Player::get_cardsWon(){
     return this->_cardsWon;
 }
 
-
+double Player::get_win_rate(){
+    return this->win_rate;
+}
+void Player::set_win_rate(double num){
+    this->win_rate = num;
+}
 
 // void Player::set_win_rate()
 // {
