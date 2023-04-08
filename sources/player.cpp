@@ -81,7 +81,7 @@ int Player::get_Losses()
 
 // get & set of the cards that the player has won
 void Player::set_cardsWon(string s){
-    this->_cardsWon = s + " , "+this->_cardsWon;
+    this->_cardsWon = s + " , " + this->_cardsWon;
 }
 string Player::get_cardsWon(){
     return this->_cardsWon;

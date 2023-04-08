@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <random>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 const int NUM_SHAPE = 4;
 const int NUM_OF_NUMCARD = 13;
@@ -85,23 +86,29 @@ void Game::printLog()
 void Game::printStats()
 {
 
-        //https://goodcalculators.com/winning-percentage-calculator/
-        double temp = (2 * _p1.get_Wins() + get_draw())/ (2 * this->_turns)* 100 ;
-        _p1.set_win_rate(temp);
+        double temp = ((double)get_draw() / (double)this->_turns) * 100;
 
-         cout << "------------------------------------- Basic Statistics:  -------------------------------------" << endl;
-        cout << "This Game " << _p1.getName() << " VS " <<  _p2.getName()<< endl;
+        cout << "------------------------------------- Basic Statistics:  -------------------------------------" << endl;
+        cout << "This Game " << _p1.getName() << " VS " << _p2.getName() << endl;
         cout << "Amount Of Draws: " << get_draw() << endl;
+        cout << "Draw Rate: " << temp << "%" << endl;
         cout << "Amount Of Turns: " << this->_turns << endl;
 
-        cout << "------------------ " << "Player One: " << _p1.getName() << " ------------------" << endl;
+        temp = ((double)_p1.get_Wins() / (double)this->_turns) * 100;
+        cout << "------------------ "
+             << "Player One: " << _p1.getName() << " ------------------" << endl;
         cout << "Num of Wins: " << _p1.get_Wins() << endl;
         cout << "Num of Losses: " << _p1.get_Losses() << endl;
-        cout << "Win Rate: " << _p1.get_win_rate() << "%" << endl;
+        cout << "Win Rate: " << temp << "%" << endl;
         cout << "Cards Won: " << _p1.get_cardsWon() << endl;
 
-
-
+        temp = ((double)_p2.get_Wins() / (double)this->_turns) * 100;
+        cout << "------------------ "
+             << "Player Two: " << _p2.getName() << " ------------------" << endl;
+        cout << "Num of Wins: " << _p2.get_Wins() << endl;
+        cout << "Num of Losses: " << _p2.get_Losses() << endl;
+        cout << "Win Rate: " << temp << "%" << endl;
+        cout << "Cards Won: " << _p2.get_cardsWon() << endl;
 }
 
 int Game::get_draw()
