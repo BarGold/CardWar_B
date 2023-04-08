@@ -91,6 +91,7 @@ void Game::printWiner()
 {
         if (_p1.cardesTaken() == _p2.cardesTaken())
         {
+                cout << "The game ended in a draw" << endl;
         }
         else if (_p1.cardesTaken() > _p2.cardesTaken())
         {
