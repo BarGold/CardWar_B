@@ -6,6 +6,7 @@ namespace ariel
 {
 };
 
+// constructor
 Player::Player(string name)
 {
     this->_name = name;
@@ -60,21 +61,21 @@ void Player::set_cardesTaken(int num)
 // get & set of wins to player
 void Player::set_Wins(int num)
 {
-    _Wins = _Wins + num;
+    this->_Wins = this->_Wins + num;
 }
 int Player::get_Wins()
 {
-    return _Wins;
+    return this->_Wins;
 }
 
 // get & set of losses to player
 void Player::set_Losses(int num)
 {
-    _Losses = _Losses + num;
+    this->_Losses = this->_Losses + num;
 }
 int Player::get_Losses()
 {
-    return _Losses;
+    return this->_Losses;
 }
 
 

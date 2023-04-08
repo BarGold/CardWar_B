@@ -17,12 +17,9 @@ namespace ariel
 };
 Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
 {
-        // !!!!!!!
         // first we need to creat the deck cards for the game
-        // we creat 52 cards
-        // vector<Card> deck;
         int a[NUM_OF_NUMCARD] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}; // 14 - Ace card
-        string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", "Diamonds"};
+        string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", "Diamonds"};      // the shape of cards
         for (int i = 0; i < NUM_OF_NUMCARD; i++)
         {
                 for (int j = 0; j < NUM_SHAPE; j++)
@@ -31,70 +28,33 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
                         deck.push_back(cards);
                 }
         }
-        //!!!!!!!
+
         // now we need to shuffle the deck
-        // to get random numbers each run
+        // to solv this pat i used https://stackoverflow.com/questions/26320612/c-random-shuffle-how-does-it-work
+        // && https://en.cppreference.com/w/cpp/algorithm/random_shuffle
         random_device rd;
         mt19937 g(rd());
-        // Use std::shuffle to randomly shuffle the cards in the deck
-        shuffle(deck.begin(), deck.end(), g);
+        shuffle(deck.begin(), deck.end(), g); //shuffle the cards in the deck
 
-        // ***
         // Each of the players receives 26 cards
         size_t i = 0;
         while (i < deck.size())
         {
-                _p1.add_to_stack(deck.at(i));
+                this->_p1.add_to_stack(deck.at(i));
                 i++;
-                _p2.add_to_stack(deck.at(i));
+                this->_p2.add_to_stack(deck.at(i));
                 i++;
         }
-        _lastTurn = "";
-        _allGame = "";
-        _war = 0;
-        _maxTurns = 0;
+        this->_lastTurn = "";
+        this->_allGame = "";
+        this->_draw = 0;
 
         // now we redy to play
 }
 
-// Game::~Game()
-// {
-//         // delete &p1;
-//         // delete &p2;
-//         // delete[] a;
-//         // delete[] a;
-// }
-
-void Game::set_war(int num)
-{
-        _war = _war + num;
-}
-int Game::get_war()
-{
-        return _war;
-}
-
-/// temp ///// 
-void Game::set_maxTurns(int num)
-{
-        _maxTurns = _maxTurns + num;
-}
-int Game::get_maxTurns()
-{
-        return _maxTurns;
-}
-
-void Game::set_name_win()
-{
-}
-string Game::get_name_win()
-{
-        return "";
-}
-
 void Game::playAll()
 {
-        while (_p1.stacksize() != 0)
+        while (_p1.stacksize() != 0 || _p2.stacksize() != 0)
         {
                 playTurn();
         }
@@ -155,28 +115,26 @@ void Game::playTurn()
         {
                 throw("A player cannot play with himself");
         }
+        // the game is over
         if (_p1.stacksize() == 0 || _p2.stacksize() == 0)
         {
                 throw("game over");
         }
 
         _lastTurn = "";
-
-
-        set_maxTurns(1);
         int flag_draw = 0;
-        // _p2.set_win(-1);
-        // _p1.set_win(-1);
+        int num_of_card = 0; // The number of cards on the board
 
-        int num_of_card = 0;
         // Returns a reference to the last card in the gamer stack
         Card p1_card = _p1.get_stack().back();
         Card p2_card = _p2.get_stack().back();
+        // removes the card from the stack
         _p2.removes_C_S();
         _p1.removes_C_S();
 
         num_of_card = 2;
 
+        // to the print turn 11 = "Jack" | 12="Queen" | 13 = "King" | 14 = "Ace"
         string p1_card_Test = "";
         string p2_card_Test = "";
         if (p1_card.get_NumCard() > 10)
@@ -196,32 +154,30 @@ void Game::playTurn()
                 p2_card_Test = to_string(p2_card.get_NumCard());
         }
 
+        // if we have a draw :
         if (p1_card.get_NumCard() == p2_card.get_NumCard())
         {
                 flag_draw = 1;
-                // _p2.set_win(2);
-                // _p1.set_win(2);
 
                 while (flag_draw == 1)
                 {
-                        set_war(1);
-                        set_maxTurns(1);
+                        this->_draw = this->_draw + 1;
                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() +
                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". Draw. ";
                         if (_p1.stacksize() == 0)
                         {
-                                num_of_card = num_of_card / 2;
+                                num_of_card = num_of_card / 2; // Divide the cards on the board into 2
                                 _p1.set_cardesTaken(num_of_card);
                                 _p2.set_cardesTaken(num_of_card);
-                                flag_draw = 0;
+                                flag_draw = 0; // the draw over - No more cards to play
                         }
                         else if (_p1.stacksize() == 1)
                         {
                                 num_of_card = num_of_card + 2;
-                                num_of_card = num_of_card / 2;
+                                num_of_card = num_of_card / 2; // Divide the cards on the board into 2
                                 _p1.set_cardesTaken(num_of_card);
                                 _p2.set_cardesTaken(num_of_card);
-                                flag_draw = 0;
+                                flag_draw = 0; // the draw over - No more cards to play
                         }
                         else
                         {
@@ -241,6 +197,7 @@ void Game::playTurn()
                                 _p2.removes_C_S();
                                 _p1.removes_C_S();
 
+                                // to the print turn 11 = "Jack" | 12="Queen" | 13 = "King" | 14 = "Ace"
                                 if (p1_card.get_NumCard() > 10)
                                 {
                                         p1_card_Test = Card_Test(p1_card.get_NumCard());
@@ -258,10 +215,10 @@ void Game::playTurn()
                                         p2_card_Test = to_string(p2_card.get_NumCard());
                                 }
 
+                                // if p1 win the draw
+
                                 if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                                 {
-                                        // _p2.set_win(0);
-                                        // _p1.set_win(1);
                                         _p1.set_Wins(1);
                                         _p2.set_Losses(1);
                                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
@@ -269,10 +226,10 @@ void Game::playTurn()
                                         _p1.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
+
+                                // if p2 win the draw
                                 else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
                                 {
-                                        // _p2.set_win(1);
-                                        // _p1.set_win(0);
                                         _p2.set_Wins(1);
                                         _p1.set_Losses(1);
                                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
@@ -283,25 +240,30 @@ void Game::playTurn()
                         }
                 }
         }
+        // if p1 win
         else if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
         {
-                // _p2.set_win(0);
-                // _p1.set_win(1);
                 _p1.set_Wins(1);
                 _p2.set_Losses(1);
                 _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                             _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
                 _p1.set_cardesTaken(num_of_card);
         }
+        // if p2 win
         else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
         {
-                // _p2.set_win(1);
-                // _p1.set_win(0);
                 _p2.set_Wins(1);
                 _p1.set_Losses(1);
                 _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                             _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
                 _p2.set_cardesTaken(num_of_card);
         }
-        _allGame = _lastTurn + "\n" + _allGame;
+        if (_p1.stacksize() == 0 || _p2.stacksize() == 0)
+        {
+                _allGame = _allGame + _lastTurn;
+        }
+        else
+        {
+                _allGame = _allGame + _lastTurn + "\n";
+        }
 }
