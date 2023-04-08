@@ -51,8 +51,6 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         }
         _lastTurn = "";
         _allGame = "";
-        cout << "hii bar" << endl;
-        cout << "p1_stacksize: " << _p1.stacksize() << endl;
 
         // now we redy to play
 }
@@ -118,27 +116,19 @@ void Game::printLastTurn()
 
 void Game::playTurn()
 {
-        cout << "all Game: " << _allGame << endl;
-
+        
         _lastTurn = "";
 
         int flag_draw = 0;
         _p2.set_win(-1);
         _p1.set_win(-1);
-        
-        cout << "p1_stacksize: " << _p1.stacksize() << endl;
+
         int num_of_card = 0;
         // Returns a reference to the last card in the gamer stack
-        cout << "My problem" << endl; 
         Card p1_card = _p1.get_stack().back();
-        cout << "p1_card: " << p1_card.get_NumCard() << endl;
         Card p2_card = _p2.get_stack().back();       
-        _p2.get_stack().pop_back();
-        _p1.get_stack().pop_back();
-
-
-        cout << "p1_card: " << p1_card.get_NumCard() << endl;
-        cout << "p2_card: " << p2_card.get_NumCard() << endl;
+        _p2.removes_C_S();
+        _p1.removes_C_S();
 
         num_of_card = 2;
 
@@ -174,23 +164,23 @@ void Game::playTurn()
                                 p1_card = _p1.get_stack().back();
                                 p2_card = _p2.get_stack().back();
 
-                                _p2.get_stack().pop_back();
-                                _p1.get_stack().pop_back();
+                                _p2.removes_C_S();
+                                _p1.removes_C_S();
 
                                 // a new war
                                 num_of_card = num_of_card + 2;
                                 p1_card = _p1.get_stack().back();
                                 p2_card = _p2.get_stack().back();
 
-                                _p2.get_stack().pop_back();
-                                _p1.get_stack().pop_back();
+                                _p2.removes_C_S();
+                                _p1.removes_C_S();
 
                                 if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                                 {
                                         _p2.set_win(0);
                                         _p1.set_win(1);
-                                        _lastTurn = _lastTurn +  _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape() +
-                                                    _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + "." + _p1.getName() + "wins";
+                                        _lastTurn =_lastTurn + _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape() + " " +
+                                                    _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
                                         _p1.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
@@ -198,8 +188,8 @@ void Game::playTurn()
                                 {
                                         _p2.set_win(1);
                                         _p1.set_win(0);
-                                        _lastTurn = _lastTurn + _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " +
-                                                    _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + "." + _p2.getName() + "wins";
+                                        _lastTurn = _lastTurn + _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape() + " " +
+                                                    _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
                                         _p2.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
@@ -211,7 +201,7 @@ void Game::playTurn()
                 _p2.set_win(0);
                 _p1.set_win(1);
                 _lastTurn = _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape()+ " " +
-                _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins" ;
+                _p2.getName() + " played " + to_string(p2_card.get_NumCard()) + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins." ;
                 _p1.set_cardesTaken(num_of_card);
         }
         else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
@@ -219,7 +209,7 @@ void Game::playTurn()
                 _p2.set_win(1);
                 _p1.set_win(0);
                 _lastTurn = _p1.getName() + " played " + to_string(p1_card.get_NumCard()) + " of " + p1_card.get_shape()+ " " +
-                _p2.getName() + " played " + to_string(p2_card.get_NumCard())+ " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins" ;
+                _p2.getName() + " played " + to_string(p2_card.get_NumCard())+ " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins." ;
                 _p2.set_cardesTaken(num_of_card);
         }
         _allGame = _lastTurn + " " + _allGame ; 

@@ -32,6 +32,7 @@ public:
 
     void add_to_stack(Card& card);
     vector<Card> get_stack();
+    void removes_C_S();
     int stacksize();
 
     // void add_to_cardesTaken(Card& card);

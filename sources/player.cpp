@@ -9,6 +9,7 @@ namespace ariel
     {
         this->_name = name;
         this->_win = -1;
+        this->_cardesTaken = 0;
     }
     Player::~Player()
     {
@@ -21,6 +22,10 @@ namespace ariel
 
     vector<Card> Player::get_stack(){
         return this->_stack;
+    }
+
+    void Player::removes_C_S(){
+        _stack.pop_back();
     }
 
     // void Player::add_to_cardesTaken(Card& card){
