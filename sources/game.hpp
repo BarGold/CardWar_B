@@ -7,6 +7,7 @@
 #include "player.hpp"
 using namespace std;
 
+
 namespace ariel
 {
 };
@@ -20,6 +21,9 @@ private:
     string _lastTurn;
     string _allGame;
 
+    // the deck of cards to play a game
+    vector<Card> deck;
+
     double draw_rate;
     int draw_amount; //  (draw within a draw counts as 2 draws. )
 
@@ -27,10 +31,10 @@ private:
 
 public:
     Game(Player& p1, Player& p2);
-    ~Game();
+    // ~Game();
 
-    // the deck of cards to play a game
-    vector<Card> deck;
+    // // the deck of cards to play a game
+    // vector<Card> deck;
     // vector<Card> card_turn;
 
     // void add_to_cardesTurn(Card &card);

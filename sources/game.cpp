@@ -54,13 +54,14 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
 
         // now we redy to play
 }
-Game::~Game()
-{
-        // delete &p1;
-        // delete &p2;
-        // delete[] a;
-        // delete[] a;
-}
+
+// Game::~Game()
+// {
+//         // delete &p1;
+//         // delete &p2;
+//         // delete[] a;
+//         // delete[] a;
+// }
 
 void Game::set_war()
 {
@@ -121,6 +122,14 @@ void Game::printLastTurn()
 
 void Game::playTurn()
 {
+
+        // test for "One player" - A player cannot play with himself :
+        if(&_p1 == &_p2){
+                throw ("A player cannot play with himself");
+        }
+        if(_p1.stacksize() == 0 || _p2.stacksize() == 0){
+                throw ("game over");
+        }
         
         _lastTurn = "";
 

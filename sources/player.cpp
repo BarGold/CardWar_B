@@ -11,10 +11,11 @@ namespace ariel
         this->_win = -1;
         this->_cardesTaken = 0;
     }
-    Player::~Player()
-    {
-        // _stack.clear();
-    }
+    
+    // Player::~Player()
+    // {
+    //     // _stack.clear();
+    // }
 
     void Player::add_to_stack(Card& card){
         _stack.push_back(card);

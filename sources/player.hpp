@@ -5,7 +5,6 @@
 #include <vector>
 #include "card.hpp"
 using namespace std;
-
 namespace ariel
 {
 };
@@ -27,7 +26,7 @@ private:
 
 public:
     Player(string name);
-    ~Player();
+    // ~Player();
     string getName();
 
     void add_to_stack(Card& card);
