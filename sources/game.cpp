@@ -175,6 +175,8 @@ void Game::playTurn()
                         {
                                 num_of_card = num_of_card + 2;
                                 num_of_card = num_of_card / 2; // Divide the cards on the board into 2
+                                _p2.removes_C_S();
+                                _p1.removes_C_S();
                                 _p1.set_cardesTaken(num_of_card);
                                 _p2.set_cardesTaken(num_of_card);
                                 flag_draw = 0; // the draw over - No more cards to play
