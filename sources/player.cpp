@@ -8,10 +8,12 @@ namespace ariel
     Player::Player(string name)
     {
         this->_name = name;
-        this->_win = -1;
+        // this->_win = -1;
         this->_cardesTaken = 0;
+        this->_Losses = 0;
+        this->_Wins = 0;
     }
-    
+
     // Player::~Player()
     // {
     //     // _stack.clear();
@@ -58,7 +60,24 @@ namespace ariel
     void Player::set_cardesTaken(int num){
         _cardesTaken = _cardesTaken + num;
     }
-    
+
+    void Player::set_Wins(int num)
+    {
+        _Wins = _Wins + num;
+    }
+    int Player::get_Wins()
+    {
+        return _Wins;
+    }
+
+    void Player::set_Losses(int num)
+    {
+        _Losses = _Losses + num;
+    }
+    int Player::get_Losses()
+    {
+        return _Losses;
+    }
 
     void Player::set_win_rate()
     {
@@ -68,11 +87,11 @@ namespace ariel
         return 0;
     }
 
-    void Player::set_win(int n)
-    {
-        _win = n;
-    }
-    int Player::get_win()
-    {
-        return _win;
-    }
+    // void Player::set_win(int n)
+    // {
+    //     _win = n;
+    // }
+    // int Player::get_win()
+    // {
+    //     return _win;
+    // }

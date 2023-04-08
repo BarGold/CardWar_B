@@ -27,7 +27,8 @@ private:
     double draw_rate;
     int draw_amount; //  (draw within a draw counts as 2 draws. )
 
-    int war; // count how many war have in 1 turn;
+    int _maxTurns;
+    int _war; // count how many war have in 1 turn;
 
 public:
     Game(Player& p1, Player& p2);
@@ -41,8 +42,13 @@ public:
     // vector<Card> get_cardesTurn();
 
 
-    void set_war();
+    void set_war(int num);
     int get_war();
+
+    /////// temp 
+
+    void set_maxTurns(int num);
+    int get_maxTurns();
 
     void set_name_win();
     string get_name_win();

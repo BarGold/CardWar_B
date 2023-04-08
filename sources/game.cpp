@@ -51,6 +51,8 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         }
         _lastTurn = "";
         _allGame = "";
+        _war = 0;
+        _maxTurns = 0;
 
         // now we redy to play
 }
@@ -63,12 +65,23 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
 //         // delete[] a;
 // }
 
-void Game::set_war()
+void Game::set_war(int num)
 {
+        _war = _war + num;
 }
 int Game::get_war()
 {
-        return 0;
+        return _war;
+}
+
+/// temp ///// 
+void Game::set_maxTurns(int num)
+{
+        _maxTurns = _maxTurns + num;
+}
+int Game::get_maxTurns()
+{
+        return _maxTurns;
 }
 
 void Game::set_name_win()
@@ -117,10 +130,11 @@ void Game::printLastTurn()
         cout << _lastTurn << endl;
 }
 
-string Card_Test(int num){
+string Card_Test(int num)
+{
         if (num == 11)
         {
-                return "Jack"; 
+                return "Jack";
         }
         else if (num == 12)
         {
@@ -131,30 +145,33 @@ string Card_Test(int num){
                 return "King";
         }
         return "Ace";
-        
 }
 
 void Game::playTurn()
 {
 
         // test for "One player" - A player cannot play with himself :
-        if(&_p1 == &_p2){
-                throw ("A player cannot play with himself");
+        if (&_p1 == &_p2)
+        {
+                throw("A player cannot play with himself");
         }
-        if(_p1.stacksize() == 0 || _p2.stacksize() == 0){
-                throw ("game over");
+        if (_p1.stacksize() == 0 || _p2.stacksize() == 0)
+        {
+                throw("game over");
         }
-        
+
         _lastTurn = "";
 
+
+        set_maxTurns(1);
         int flag_draw = 0;
-        _p2.set_win(-1);
-        _p1.set_win(-1);
+        // _p2.set_win(-1);
+        // _p1.set_win(-1);
 
         int num_of_card = 0;
         // Returns a reference to the last card in the gamer stack
         Card p1_card = _p1.get_stack().back();
-        Card p2_card = _p2.get_stack().back();       
+        Card p2_card = _p2.get_stack().back();
         _p2.removes_C_S();
         _p1.removes_C_S();
 
@@ -166,7 +183,8 @@ void Game::playTurn()
         {
                 p1_card_Test = Card_Test(p1_card.get_NumCard());
         }
-        else{
+        else
+        {
                 p1_card_Test = to_string(p1_card.get_NumCard());
         }
         if (p2_card.get_NumCard() > 10)
@@ -181,11 +199,13 @@ void Game::playTurn()
         if (p1_card.get_NumCard() == p2_card.get_NumCard())
         {
                 flag_draw = 1;
-                _p2.set_win(2);
-                _p1.set_win(2);
-                
+                // _p2.set_win(2);
+                // _p1.set_win(2);
+
                 while (flag_draw == 1)
                 {
+                        set_war(1);
+                        set_maxTurns(1);
                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() +
                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". Draw. ";
                         if (_p1.stacksize() == 0)
@@ -240,17 +260,21 @@ void Game::playTurn()
 
                                 if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
                                 {
-                                        _p2.set_win(0);
-                                        _p1.set_win(1);
-                                        _lastTurn =_lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
+                                        // _p2.set_win(0);
+                                        // _p1.set_win(1);
+                                        _p1.set_Wins(1);
+                                        _p2.set_Losses(1);
+                                        _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
                                         _p1.set_cardesTaken(num_of_card);
                                         flag_draw = 0;
                                 }
                                 else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
                                 {
-                                        _p2.set_win(1);
-                                        _p1.set_win(0);
+                                        // _p2.set_win(1);
+                                        // _p1.set_win(0);
+                                        _p2.set_Wins(1);
+                                        _p1.set_Losses(1);
                                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
                                         _p2.set_cardesTaken(num_of_card);
@@ -261,19 +285,23 @@ void Game::playTurn()
         }
         else if (p1_card.get_NumCard() > p2_card.get_NumCard() || (p1_card.get_NumCard() == 2 && p2_card.get_NumCard() == 14))
         {
-                _p2.set_win(0);
-                _p1.set_win(1);
-                _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape()+ " " +
-                _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins." ;
+                // _p2.set_win(0);
+                // _p1.set_win(1);
+                _p1.set_Wins(1);
+                _p2.set_Losses(1);
+                _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
+                            _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p1.getName() + " wins.";
                 _p1.set_cardesTaken(num_of_card);
         }
         else if (p1_card.get_NumCard() < p2_card.get_NumCard() || (p2_card.get_NumCard() == 2 && p1_card.get_NumCard() == 14))
         {
-                _p2.set_win(1);
-                _p1.set_win(0);
-                _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape()+ " " +
-                _p2.getName() + " played " + p2_card_Test+ " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins." ;
+                // _p2.set_win(1);
+                // _p1.set_win(0);
+                _p2.set_Wins(1);
+                _p1.set_Losses(1);
+                _lastTurn = _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
+                            _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". " + _p2.getName() + " wins.";
                 _p2.set_cardesTaken(num_of_card);
         }
-        _allGame = _lastTurn + "\n" + _allGame ; 
+        _allGame = _lastTurn + "\n" + _allGame;
 }
