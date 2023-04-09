@@ -25,6 +25,7 @@ private:
     ////////////////////////// To Basic Statistics ////////////////////////////
     int _draw;  // count how many draw had in the game;
     int _turns; // num of turns in the game;
+    
 
 public:
     Game(Player &p1, Player &p2);

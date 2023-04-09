@@ -7,7 +7,7 @@ namespace ariel
 };
 
 // constructor
-Player::Player(string name):_name(name) , _cardesTaken(0),_Wins(0),_Losses(0) , _cardsWon("")
+Player::Player(string name):_name(name) , _cardesTaken(0),_flag(0),_Wins(0),_Losses(0) , _cardsWon("")
 {
 }
 
@@ -81,4 +81,13 @@ void Player::set_cardsWon(const string &s)
 string Player::get_cardsWon()
 {
     return _cardsWon;
+}
+
+void Player::set_flag()
+{
+    _flag = 1;
+}
+int Player::get_flag()
+{
+    return _flag;
 }

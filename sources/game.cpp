@@ -18,6 +18,13 @@ namespace ariel
 };
 Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2) , _lastTurn(""),_allGame(""),_draw(0),_turns(0)
 {
+        // we chack if player1 && player2 is a new player - becuse player can play just one game
+        if(_p1.get_flag() == 1 || _p2.get_flag() == 1){
+                throw("One of the players is already playing");
+        }
+        _p1.set_flag();
+        _p2.set_flag();
+
         // first we need to creat the deck cards for the game
         int a[NUM_OF_NUMCARD] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}; // 14 - Ace card
         string b[NUM_SHAPE] = {"Spades", "Hearts", "Clubs", "Diamonds"};      // the shape of cards

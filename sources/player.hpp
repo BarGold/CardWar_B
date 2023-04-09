@@ -17,6 +17,9 @@ private:
     vector<Card> _stack; // cards in the player stack
     int _cardesTaken;    // num of cards that the player has won
 
+    int _flag; // this flag we use to chack if the player play one game
+               // 0 - new gmae , 1- in a game
+
     ////////////////////////// To Basic Statistics ////////////////////////////
     int _Wins;        //num of wins to player
     int _Losses;      //num of losses to player
@@ -33,6 +36,11 @@ public:
 
     void set_cardesTaken(int num); // add num of cards that the player has won
     int cardesTaken();             // num of cards that the player has won
+
+    // this flag we use to chack if the player play one game
+    // 0 - new gmae , 1- in a game
+    void set_flag();
+    int get_flag();
 
     ////////////////////////// To Basic Statistics ////////////////////////////
 
