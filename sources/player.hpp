@@ -45,7 +45,7 @@ public:
     int get_Losses();
 
     // get & set of the cards that the player has won
-    void set_cardsWon(string s);
+    void set_cardsWon(const string &s);
     string get_cardsWon();
 };
 
