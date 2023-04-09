@@ -7,37 +7,32 @@ namespace ariel
 };
 
 // constructor
-Player::Player(string name)
+Player::Player(string name):_name(name) , _cardesTaken(0),_Wins(0),_Losses(0) , _cardsWon("")
 {
-    this->_name = name;
-    this->_cardesTaken = 0;
-    this->_Losses = 0;
-    this->_Wins = 0;
-    this->_cardsWon = "";
 }
 
 // get the name of player
 string Player::getName()
 {
-    return this->_name;
+    return _name;
 }
 
 // add card to stack player
 void Player::add_to_stack(Card &card)
 {
-    this->_stack.push_back(card);
+    _stack.push_back(card);
 }
 
 // get the stack of player
 vector<Card> Player::get_stack()
 {
-    return this->_stack;
+    return _stack;
 }
 
 // removes card from stack player
 void Player::removes_C_S()
 {
-    this->_stack.pop_back();
+    _stack.pop_back();
 }
 
 //get the stack size
@@ -49,41 +44,41 @@ int Player::stacksize()
 //get the num of cards that the player has won
 int Player::cardesTaken()
 {
-    return this->_cardesTaken;
+    return _cardesTaken;
 }
 
 // add num of cards that the player has won
 void Player::set_cardesTaken(int num)
 {
-    this->_cardesTaken = this->_cardesTaken + num;
+    _cardesTaken = _cardesTaken + num;
 }
 
 // get & set of wins to player
 void Player::set_Wins(int num)
 {
-    this->_Wins = this->_Wins + num;
+    _Wins = _Wins + num;
 }
 int Player::get_Wins()
 {
-    return this->_Wins;
+    return _Wins;
 }
 
 // get & set of losses to player
 void Player::set_Losses(int num)
 {
-    this->_Losses = this->_Losses + num;
+    _Losses = _Losses + num;
 }
 int Player::get_Losses()
 {
-    return this->_Losses;
+    return _Losses;
 }
 
 // get & set of the cards that the player has won
 void Player::set_cardsWon(const string &s)
 {
-    this->_cardsWon = s + " , " + this->_cardsWon;
+    _cardsWon = s + " , " + _cardsWon;
 }
 string Player::get_cardsWon()
 {
-    return this->_cardsWon;
+    return _cardsWon;
 }
