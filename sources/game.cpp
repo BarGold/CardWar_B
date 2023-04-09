@@ -16,7 +16,7 @@ const int NUM_OF_NUMCARD = 13;
 namespace ariel
 {
 };
-Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
+Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2) , _lastTurn(""),_allGame(""),_draw(0),_turns(0)
 {
         // first we need to creat the deck cards for the game
         int a[NUM_OF_NUMCARD] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}; // 14 - Ace card
@@ -41,15 +41,11 @@ Game::Game(Player &p1, Player &p2) : _p1(p1), _p2(p2)
         size_t i = 0;
         while (i < deck.size())
         {
-                this->_p1.add_to_stack(deck.at(i));
+                _p1.add_to_stack(deck.at(i));
                 i++;
-                this->_p2.add_to_stack(deck.at(i));
+                _p2.add_to_stack(deck.at(i));
                 i++;
         }
-        this->_lastTurn = "";
-        this->_allGame = "";
-        this->_draw = 0;
-        this->_turns = 0;
 
         // now we redy to play
 }
@@ -86,15 +82,15 @@ void Game::printLog()
 void Game::printStats()
 {
 
-        double temp = ((double)get_draw() / (double)this->_turns) * 100;
+        double temp = ((double)get_draw() / (double)_turns) * 100;
 
         cout << "------------------------------------- Basic Statistics:  -------------------------------------" << endl;
         cout << "This Game " << _p1.getName() << " VS " << _p2.getName() << endl;
         cout << "Amount Of Draws: " << get_draw() << endl;
         cout << "Draw Rate: " << temp << "%" << endl;
-        cout << "Amount Of Turns: " << this->_turns << endl;
+        cout << "Amount Of Turns: " << _turns << endl;
 
-        temp = ((double)_p1.get_Wins() / (double)this->_turns) * 100;
+        temp = ((double)_p1.get_Wins() / (double)_turns) * 100;
         cout << "------------------ "
              << "Player One: " << _p1.getName() << " ------------------" << endl;
         cout << "Num of Wins: " << _p1.get_Wins() << endl;
@@ -102,7 +98,7 @@ void Game::printStats()
         cout << "Win Rate: " << temp << "%" << endl;
         cout << "Cards Won: " << _p1.get_cardsWon() << endl;
 
-        temp = ((double)_p2.get_Wins() / (double)this->_turns) * 100;
+        temp = ((double)_p2.get_Wins() / (double)_turns) * 100;
         cout << "------------------ "
              << "Player Two: " << _p2.getName() << " ------------------" << endl;
         cout << "Num of Wins: " << _p2.get_Wins() << endl;
@@ -164,7 +160,7 @@ void Game::playTurn()
         _p1.removes_C_S();
 
         num_of_card = 2;
-        this->_turns = this->_turns + 1;
+        _turns = _turns + 1;
 
         // to the print turn 11 = "Jack" | 12="Queen" | 13 = "King" | 14 = "Ace"
         string p1_card_Test = "";
@@ -193,7 +189,7 @@ void Game::playTurn()
 
                 while (flag_draw == 1)
                 {
-                        this->_draw = this->_draw + 1;
+                        _draw = _draw + 1;
                         _lastTurn = _lastTurn + _p1.getName() + " played " + p1_card_Test + " of " + p1_card.get_shape() + " " +
                                     _p2.getName() + " played " + p2_card_Test + " of " + p2_card.get_shape() + ". Draw. ";
                         if (_p1.stacksize() == 0)
